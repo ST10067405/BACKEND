@@ -38,6 +38,7 @@ router.patch("/:id", async (req, res) => {
 
     res.send(result).status(200);
 });
+
 // Gets a single record by id
 router.get("/:id", async (req, res) => {
     let collection = await db.collection("posts");
@@ -47,6 +48,7 @@ router.get("/:id", async (req, res) => {
     if (!result) res.send("Not found").status(404);
     else res.send(result).status(200);
 });
+
 // Delete a record
 router.delete("/:id", async (req, res) => {
     const query = { _id: new ObjectId(req.params.id) };
@@ -56,4 +58,5 @@ router.delete("/:id", async (req, res) => {
 
     res.send(result).status(200);
 });
+
 export default router;
