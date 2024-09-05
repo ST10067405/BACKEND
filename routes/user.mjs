@@ -15,13 +15,12 @@ router.post("/signup", async (req, res) => {
     const password = bcrypt.hash(req.body.password, 10)
     let newDocument = {
         name: req.body.name,
-        password: (await password).tostring()
+        password: (await password).toString()
     };
     let collection = await db.collection("users");
     let result = await collection.insertOne(newDocument);
     console.log(password);
     res.send(result).status(204);
-
 });
 
 router.post("/login", bruteforce.prevent, async (req, res) => {
